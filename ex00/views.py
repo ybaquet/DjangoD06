@@ -1,6 +1,8 @@
 from django.shortcuts import render
 import random
 from django.conf import settings
+from .models import MyUsers
+from .forms import SignInForm, SignUpForm
 
 # Create your views here.
 def home(request):
@@ -17,16 +19,15 @@ def home(request):
     return response    
 
 def sign_in(request):
-    users = MyUser.objects.all()
+    users = MyUsers.objects.all()
     if (request.method == "POST"):
         form = SignInForm(request.POST)
         if form.is_valid():
             form.save()
             form = SignInForm()
-        else:
-            form =  SignInForm()
-        return render(request, 'ex/form.html', {'users' : users,
-                                            'form': form })
+    else:
+        form =  SignInForm()
+    return render(request, 'form.html', {'users' : users, 'form': form })
 
 def sign_up(request):
     if (request.method == "POST"):
