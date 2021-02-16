@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{title}}</title>
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+</head>
+<body>
+{% bootstrap_messages %}
+{% block content %}
+{% endblock %}
+</body>
+</html>
